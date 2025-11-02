@@ -1,7 +1,3 @@
-//
-// Created by Manju Muralidharan on 10/19/25.
-//
-
 #ifndef HEAP_H
 #define HEAP_H
 
@@ -15,7 +11,9 @@ struct MinHeap {
     MinHeap() { size = 0; }
 
     void push(int idx, int weightArr[]) {
-        // TODO: insert index at end of heap, restore order using upheap()
+        data[size] = idx;
+        upheap(size, weightArr);
+        size++;
     }
 
     int pop(int weightArr[]) {
@@ -25,7 +23,16 @@ struct MinHeap {
     }
 
     void upheap(int pos, int weightArr[]) {
-        // TODO: swap child upward while smaller than parent
+        while (pos > 0) {
+            int parent = (pos - 1) / 2;
+            int childIdx = data[pos];
+            int parentIdx = data[parent];
+
+            if (weightArr[childIdx] >= weightArr[parentIdx]) break;
+
+            int t = data[pos]; data [pos] = data[parent]; data [parent] = t;
+            pos = parent;
+        }
     }
 
     void downheap(int pos, int weightArr[]) {
