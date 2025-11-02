@@ -48,6 +48,23 @@ int main() {
         }
     }
 
+    // Test to make sure pop is working
+    {
+        MinHeap H;
+        H.size = 0;
+
+        // push all leaf nodes into heap
+        for (int i = 0; i < nextFree; i++) {
+            H.push(i, weightArr);
+        }
+
+        // pop one element and print its weight
+        if (H.size > 0) {
+            int poppedIndex = H.pop(weightArr);
+            cout << "[TEST] popped index weight = " << weightArr[poppedIndex]
+                 << " (char '" << charArr[poppedIndex] << "')" << endl;
+        }
+    }
 
     // Step 3: Build encoding tree using your heap
     int root = buildEncodingTree(nextFree);
