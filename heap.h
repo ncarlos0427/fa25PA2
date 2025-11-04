@@ -44,17 +44,13 @@ struct MinHeap {
             int r = 2 * pos + 2;
             int s = pos;
 
-            if (l < size && data[l] < data[s]) s = l;
-            if (r < size && data[r] < data[s]) s = r;
+            if (l < size && weightArr[data[l]] < weightArr[data[s]]) s = l;
+            if (r < size && weightArr[data[r]] < weightArr[data[s]]) s = r;
             if (s == pos) break;
 
-            int temp = data[pos];
-
-            data[pos] = data[s];
-            data[s] = temp;
-
-            pos = s;}
-    }
-};
+            int t = data[pos]; data[pos] = data[s]; data[s] = t;
+            pos = s;
+        }
+    }};
 
 #endif
