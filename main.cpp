@@ -105,11 +105,9 @@ int buildEncodingTree(int nextFree) {
             weightArr[p] = weightArr[x] + weightArr[y];
             H.push(p, weightArr);
         }
-
-        int root = (H.size > 0) ? H.pop(weightArr) : -1;
-        cout << "[TREE] root weight = " << (root == -1 ? -1 : weightArr[root]) << endl;
-        return root;
-    }
+    int root = (H.size > 0) ? H.pop(weightArr) : -1;
+    return root;
+}
 
 void generateCodes(int root, string codes[]) {
     if (root == -1) return;
