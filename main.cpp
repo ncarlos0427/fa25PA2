@@ -160,21 +160,20 @@ void generateCodes(int root, string codes[]) {
         st.pop();
 
         if (leftArr[node] == -1 && rightArr[node] == -1) {
-            // Leaf node → assign code
             char ch = charArr[node];
+
             if (ch >= 'a' && ch <= 'z') {
-                codes[ch - 'a'] = path;
+                if (path == "") path = "0";
+                codes [ch -'a'] = path;
+
             }
         } else {
-            if (leftArr[node] != -1) {
-                st.push({leftArr[node], path + "0"});
-            }
-            if (rightArr[node] != -1) {
-                st.push({rightArr[node], path + "1"});
+            if (rightArr[node] != -1) st.push({rightArr[node], path + "1"});
+            if (leftArr[node] != -1) st.push({leftArr[node], path + "0"});
             }
         }
     }
-}
+
 
 // Step 5: Print table and encoded message
 void encodeMessage(const string& filename, string codes[]) {
