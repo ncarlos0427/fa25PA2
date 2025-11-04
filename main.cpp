@@ -28,44 +28,6 @@ int main() {
     // Step 2: Create leaf nodes for each character with nonzero frequency
     int nextFree = createLeafNodes(freq);
 
-    //test to make sure push and upheap are working
-    {
-        MinHeap H;
-        H.size = 0;
-
-        // push all leaf nodes into heap
-        for (int i = 0; i < nextFree; ++i) {
-            H.push(i, weightArr);
-        }
-
-        // print the smallest element or heap root
-        if (H.size > 0) {
-            int rootIndex = H.data[0];
-            cout << "[TEST] Smallest weight in heap = "
-                 << weightArr[rootIndex]
-                 << " (char '" << charArr[rootIndex] << "')"
-                 << endl;
-        }
-    }
-
-    // Test to make sure pop is working
-    {
-        MinHeap H;
-        H.size = 0;
-
-        // push all leaf nodes into heap
-        for (int i = 0; i < nextFree; i++) {
-            H.push(i, weightArr);
-        }
-
-        // pop one element and print its weight
-        if (H.size > 0) {
-            int poppedIndex = H.pop(weightArr);
-            cout << "[TEST] popped index weight = " << weightArr[poppedIndex]
-                 << " (char '" << charArr[poppedIndex] << "')" << endl;
-        }
-    }
-
     // Step 3: Build encoding tree using your heap
     int root = buildEncodingTree(nextFree);
 
